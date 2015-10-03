@@ -18,7 +18,36 @@ void GarageDoor::GPIO::Manager::LoadPins()
     }
 }
 
+void GarageDoor::GPIO::Manager::UnloadPins()
+{
+    if (pinList.size() < 1) { return; }
+
+    std::cout << "Unloading pins..." << std::endl;
+
+    for (pin_ptr & ptr : pinList)
+    {
+        ptr->Reset();
+    }
+
+    pinList.clear();
+}
+
 int GarageDoor::GPIO::Manager::CountPins()
 {
     return pinList.size();
+}
+
+pin_ptr GarageDoor::GPIO::Manager::GetPin(tstring pinName)
+{
+    if (pinList.size() < 1) { return nullptr; }
+
+    for (auto & i : pinList)
+    {
+        if ( i->GetName() == pinName )
+        {
+            return i;
+        }
+    }
+
+    return nullptr;
 }

@@ -12,6 +12,8 @@ namespace GPIO {
         void SetValue(tstring);
         tstring GetValue();
         tstring GetRealValue();
+        inline tstring GetName() { return this->name; }
+        inline void Reset() { SetValue(this->defaultVal); }
 
     private:
         tstring name;

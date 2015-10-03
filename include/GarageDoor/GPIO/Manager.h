@@ -16,7 +16,10 @@ namespace GPIO {
 //        Manager();
 //        ~Manager();
         void LoadPins();
+        void UnloadPins();
         int CountPins();
+        pin_ptr GetPin(tstring);
+
     private:
         pin_map pinList;
     };

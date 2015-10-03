@@ -23,6 +23,8 @@ tstring GarageDoor::GPIO::Pin::GetRealValue()
 
 void GarageDoor::GPIO::Pin::SetValue(tstring value)
 {
+    tstring path = "/sys/class/gpio_sw/" + name + "/data";
     currentVal = value;
-    // TODO: Execute call to the pin
+
+    GarageDoor::Filesystem::WriteFile(path, value);
 }

@@ -24,6 +24,9 @@ int main(int, char**)
     GarageDoor::Console::WriteLine(TEXT("Done reading GPIO pins."));
     std::cout << gpioManager->CountPins() << " pins loaded." << std::endl;
 
+    gpioManager->UnloadPins();
+    delete gpioManager;
+
     exit(EXIT_SUCCESS);
 
     // Prepare syslog for entries
