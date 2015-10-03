@@ -13,7 +13,7 @@ namespace GPIO {
     class Manager
     {
     public:
-        Manager();
+//        Manager();
 //        ~Manager();
         void LoadPins();
     private:

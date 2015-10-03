@@ -18,7 +18,7 @@ int main(int, char**)
     GarageDoor::Console::WriteLine(ss.str());
     GarageDoor::Console::WriteLine(TEXT("Reading GPIO pins..."));
 
-    GarageDoor::GPIO::Manager * gpioManager = new GarageDoor::GPIO::Manager();
+    GarageDoor::GPIO::Manager * gpioManager = new GarageDoor::GPIO::Manager;
     gpioManager->LoadPins();
 
     GarageDoor::Console::WriteLine(TEXT("Done reading GPIO pins."));
