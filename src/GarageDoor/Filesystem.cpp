@@ -13,12 +13,11 @@ std::vector<std::string> GarageDoor::Filesystem::ListDirectory(tstring path)
         ss << entry->d_name;
         std::string name = ss.str();
 
-        if ( name == "." || name == ".." )
+        if ( name != "." && name != ".." )
         {
-            continue;
+            dirlist.push_back(name);
         }
 
-        dirlist.push_back(name);
         entry = readdir(dir);
     }
 
