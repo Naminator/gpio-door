@@ -16,6 +16,7 @@ namespace GPIO {
 //        Manager();
 //        ~Manager();
         void LoadPins();
+        int CountPins();
     private:
         pin_map pinList;
     };

@@ -7,6 +7,18 @@ void GarageDoor::GPIO::Manager::LoadPins()
 
     for ( auto & i : dirList)
     {
-        std::cout << i << std::endl;
+        if (i == "standby_led" || i == "normal_led")
+        {
+            continue;
+        }
+
+        // Create instance of PIN and pushback
+        pin_ptr pin(new GarageDoor::GPIO::Pin(i));
+        pinList.push_back(pin);
     }
+}
+
+int GarageDoor::GPIO::Manager::CountPins()
+{
+    return pinList.size();
 }

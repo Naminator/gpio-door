@@ -7,7 +7,7 @@ namespace GPIO {
     class Pin
     {
     public:
-        Pin(tstring, tstring);
+        Pin(tstring);
         void SetValue(tstring);
         tstring GetValue();
 

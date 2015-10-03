@@ -1,9 +1,8 @@
 #include "GarageDoor/GPIO/Pin.h"
 
-GarageDoor::GPIO::Pin::Pin(tstring name, tstring defVal)
+GarageDoor::GPIO::Pin::Pin(tstring name)
 {
     this->name = name;
-    defaultVal = defVal;
 }
 
 tstring GarageDoor::GPIO::Pin::GetValue()
