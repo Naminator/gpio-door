@@ -16,8 +16,10 @@ int main(int, char**)
     ss << "Hardware Concurrency: " << hardwareConcurrency;
 
     GarageDoor::Console::WriteLine(ss.str());
+    GarageDoor::Console::WriteLine(TEXT("Reading GPIO pins..."));
 
     GarageDoor::GPIO::Manager * gpioManager = new GarageDoor::GPIO::Manager();
+    gpioManager->LoadPins();
 
     exit(EXIT_SUCCESS);
 

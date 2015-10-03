@@ -2,9 +2,9 @@
 #include "stdafx.h"
 #include "GarageDoor/GPIO/Pin.h"
 
-typedef shared_ptr<GarageDoor::GPIO::Pin> pin_ptr;
+typedef std::shared_ptr<GarageDoor::GPIO::Pin> pin_ptr;
 typedef std::vector<pin_ptr> pin_map;
-typedef shared_ptr<pin_map> pin_map_ptr;
+typedef std::shared_ptr<pin_map> pin_map_ptr;
 
 namespace GarageDoor {
 namespace GPIO {
@@ -13,10 +13,9 @@ namespace GPIO {
     {
     public:
         Manager();
-        ~Manager();
-
-    private:
+//        ~Manager();
         void LoadPins();
+    private:
         pin_map pinList;
     };
 
