@@ -24,3 +24,25 @@ std::vector<std::string> GarageDoor::Filesystem::ListDirectory(tstring path)
     closedir(dir);
     return dirlist;
 }
+
+tstring GarageDoor::Filesystem::ReadFile(tstring path)
+{
+    std::ifstream file(path);
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+
+    return buffer.str();
+}
+
+void GarageDoor::Filesystem::WriteFile(tstring path, tstring contents)
+{
+    std::ofstream file(path);
+    if (!file)
+    {
+        std::cerr << "Cannot open the output file." << std::endl;
+        return;
+    }
+
+    file << contents;
+    file.close();
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "GarageDoor/Filesystem.h"
 
 namespace GarageDoor {
 namespace GPIO {
@@ -10,6 +11,7 @@ namespace GPIO {
         Pin(tstring);
         void SetValue(tstring);
         tstring GetValue();
+        tstring GetRealValue();
 
     private:
         tstring name;
