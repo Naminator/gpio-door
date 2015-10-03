@@ -8,18 +8,7 @@ GarageDoor::GPIO::Manager::Manager()
 void GarageDoor::GPIO::Manager::LoadPins()
 {
     std::string path = "/sys/class/gpio_hw";
+    std::vector<std::string> dirList = GarageDoor::Filesystem::ListDirectory(path);
 
-    DIR *dir = opendir(path.c_str());
-    struct dirent *entry = readdir(dir);
-
-    std::cout << "read read read" << std::endl;
-
-    while(entry != NULL)
-    {
-        std::cout << entry->d_name << std::endl;
-        delete entry;
-        entry = readdir(dir);
-    }
-
-    closedir(dir);
+    std::cout << "Dirs found: " << dirList.size() << std::endl;
 }

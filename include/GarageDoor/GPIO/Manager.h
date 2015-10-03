@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "GarageDoor/GPIO/Pin.h"
+#include "GarageDoor/Filesystem.h"
 
 typedef std::shared_ptr<GarageDoor::GPIO::Pin> pin_ptr;
 typedef std::vector<pin_ptr> pin_map;

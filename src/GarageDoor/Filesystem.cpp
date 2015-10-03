@@ -1,6 +1,6 @@
 #include "GarageDoor/Filesystem.h"
 
-std::vector<std::string> GarageDoor::ListDirectory(tstring path)
+std::vector<std::string> GarageDoor::Filesystem::ListDirectory(tstring path)
 {
     std::vector<std::string> dirlist;
 
