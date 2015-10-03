@@ -14,7 +14,7 @@ void GarageDoor::GPIO::Manager::LoadPins()
 
     std::cout << "read read read" << std::endl;
 
-    while(entry != null)
+    while(entry != NULL)
     {
         std::cout << entry->d_name << std::endl;
         delete entry;
