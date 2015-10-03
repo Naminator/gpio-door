@@ -1,5 +1,5 @@
 CC := g++ # This is the main compiler
-# CC := clang --analyze # and comment out the linker last line for sanity
+# CC := clang --analyze # clang compiler alternative
 SRCDIR := src
 BUILDDIR := build
 TARGET := bin/garage-door
@@ -7,8 +7,8 @@ TARGET := bin/garage-door
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS := -g -Wall -Werror -std=c++11
-LIB := -pthread -lboost_system
+CFLAGS := -g -Wall -std=c++11
+LIB := -pthread
 INC := -I include
 
 $(TARGET): $(OBJECTS)

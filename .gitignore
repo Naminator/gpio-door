@@ -5,6 +5,9 @@ lib/*
 # Ignore any executables
 bin/*
 
+# Ignore QtCreator Files
+GarageDoor.*
+
 # Ignore Mac specific files
 .DS_Store
 
