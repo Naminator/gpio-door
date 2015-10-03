@@ -21,6 +21,7 @@ int main(int, char**)
     GarageDoor::GPIO::Manager * gpioManager = new GarageDoor::GPIO::Manager();
     gpioManager->LoadPins();
 
+    GarageDoor::Console::WriteLine(TEXT("Done reading GPIO pins."));
     exit(EXIT_SUCCESS);
 
     // Prepare syslog for entries

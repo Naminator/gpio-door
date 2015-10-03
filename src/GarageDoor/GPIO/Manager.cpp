@@ -12,9 +12,12 @@ void GarageDoor::GPIO::Manager::LoadPins()
     DIR *dir = opendir(path.c_str());
     struct dirent *entry = readdir(dir);
 
-    while(entry != nullptr)
+    std::cout << "read read read" << std::endl;
+
+    while(entry != null)
     {
         std::cout << entry->d_name << std::endl;
+        delete entry;
         entry = readdir(dir);
     }
 
