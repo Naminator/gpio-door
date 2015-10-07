@@ -20,8 +20,6 @@ tstring GarageDoor::GPIO::Pin::GetRealValue()
     tstring path = GetSysfsPath("data");
     currentVal = GarageDoor::Filesystem::ReadFile(path);
 
-    std::cout << "Reading at: " << path << std::endl;
-
     return currentVal;
 }
 
@@ -53,5 +51,5 @@ tstring GarageDoor::GPIO::Pin::GetSysfsPath()
 tstring GarageDoor::GPIO::Pin::GetSysfsPath(tstring location)
 {
     tstring sysfsPath = GetSysfsPath();
-    return sysfsPath + location + "/";
+    return sysfsPath + location;
 }
