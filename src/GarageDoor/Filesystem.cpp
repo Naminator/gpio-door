@@ -28,6 +28,11 @@ std::vector<std::string> GarageDoor::Filesystem::ListDirectory(tstring path)
 tstring GarageDoor::Filesystem::ReadFile(tstring path)
 {
     std::ifstream file(path);
+    if (!file.good())
+    {
+        std::cerr << "Cannot open the output file at: " << path << std::endl;
+        return nullptr;
+    }
     std::stringstream buffer;
     buffer << file.rdbuf();
 
