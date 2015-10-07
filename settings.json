@@ -1,0 +1,13 @@
+{
+    "pin_mapping": {
+        "tsochev_door": "PA12",
+        "todorov_door": "PA14"
+    },
+    "database": {
+        "driver": "mysql",
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "garagedoor_dba"
+    }
+}
