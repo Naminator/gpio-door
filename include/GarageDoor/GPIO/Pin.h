@@ -16,6 +16,7 @@ namespace GPIO {
         tstring GetDirection();
         inline tstring GetName() { return this->name; }
         inline void Reset() { SetValue(this->defaultVal); }
+        inline bool HasErrors() { return (currentVal == "error"); }
 
     private:
         tstring name;

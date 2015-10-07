@@ -26,7 +26,10 @@ void GarageDoor::GPIO::Manager::UnloadPins()
 
     for (pin_ptr & ptr : pinList)
     {
-        ptr->Reset();
+        if (!ptr->HasErrors())
+        {
+            ptr->Reset();
+        }
     }
 
     pinList.clear();

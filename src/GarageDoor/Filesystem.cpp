@@ -5,8 +5,13 @@ std::vector<std::string> GarageDoor::Filesystem::ListDirectory(tstring path)
     std::vector<std::string> dirlist;
 
     DIR * dir = opendir(path.c_str());
-    struct dirent * entry = readdir(dir);
+    if (dir == nullptr)
+    {
+        std::cerr << "Could not find directory at: " << path << std::endl;
+        return dirlist;
+    }
 
+    struct dirent * entry = readdir(dir);
     while (entry != NULL)
     {
         std::stringstream ss;
@@ -27,12 +32,16 @@ std::vector<std::string> GarageDoor::Filesystem::ListDirectory(tstring path)
 
 tstring GarageDoor::Filesystem::ReadFile(tstring path)
 {
+
+    std::cout << "Reading: " << path << std::endl;
     std::ifstream file(path);
+
     if (!file.good())
     {
         std::cerr << "Cannot open the output file at: " << path << std::endl;
-        return nullptr;
+        return TEXT("error");
     }
+
     std::stringstream buffer;
     buffer << file.rdbuf();
 
