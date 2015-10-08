@@ -2,13 +2,10 @@
 #include "GarageDoor/Console.h"
 #include "GarageDoor/GPIO/Manager.h"
 #include "GarageDoor/Filesystem.h"
-#include "nlohmann/json/json.hpp"
+#include "GarageDoor/Config.h"
 
 unsigned int hardwareConcurrency = 0;
 bool serverRunning = true;
-
-// Convenience
-using json = nlohmann::json;
 
 int main(int, char**)
 {
@@ -29,17 +26,8 @@ int main(int, char**)
     GarageDoor::Console::WriteLine(TEXT("Done reading GPIO pins."));
     std::cout << gpioManager->CountPins() << " pins loaded." << std::endl;
 
-    std::cout << "Loading JSON settings" << std::endl;
-    tstring jsonSettings = GarageDoor::Filesystem::ReadFile("./settings.json");
-
-    if (jsonSettings == "error")
-    {
-        std::cerr << "Error reading the settings.json config." << std::endl;
-        exit(EXIT_FAILURE);
-    }
-
-    json j = json::parse(jsonSettings);
-    std::cout << j["pin_mapping"]["tsochev_door"] << std::endl;
+    GarageDoor::Config * Config = new GarageDoor::Config();
+    std::cout << Config->GetSetting("serial_driver") << std::endl;
 
     if (gpioManager->CountPins() == 0)
     {
@@ -48,6 +36,7 @@ int main(int, char**)
 
     gpioManager->UnloadPins();
     delete gpioManager;
+    delete Config;
 
     exit(EXIT_SUCCESS);
 

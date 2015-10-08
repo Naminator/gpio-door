@@ -1,4 +1,5 @@
 {
+    "serial_driver": "sysfs",
     "pin_mapping": {
         "tsochev_door": "PA12",
         "todorov_door": "PA14"
