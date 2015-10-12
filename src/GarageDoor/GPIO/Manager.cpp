@@ -72,6 +72,7 @@ void GarageDoor::GPIO::Manager::LoadDoors()
         doorStruct.name = door["name"].dump();
         doorStruct.pin = door["relay_pin"].dump();
         doorStruct.sig_key = door["sig_key"].dump();
+        doorStruct.mag_key = door["magnetic_key"].dump();
 
         pin_ptr pin(GetPin(doorStruct.pin));
         if (pin != nullptr)

@@ -8,6 +8,7 @@ namespace GarageDoor {
         tstring name;
         tstring pin;
         tstring sig_key;
+        tstring mag_key;
         tstring value;
     };
 
