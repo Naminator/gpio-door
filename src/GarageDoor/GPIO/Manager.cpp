@@ -1,5 +1,12 @@
 #include "GarageDoor/GPIO/Manager.h"
 
+GarageDoor::GPIO::Manager::Manager()
+{
+    Config = new GarageDoor::Config();
+}
+
+GarageDoor::GPIO::Manager::Manager(GarageDoor::Config * conf) : Config(conf) {}
+
 void GarageDoor::GPIO::Manager::LoadPins()
 {
     std::string path = "/sys/class/gpio_sw";
@@ -53,4 +60,28 @@ pin_ptr GarageDoor::GPIO::Manager::GetPin(tstring pinName)
     }
 
     return nullptr;
+}
+
+void GarageDoor::GPIO::Manager::LoadDoors()
+{
+    json settings = Config->GetJsonRaw();
+
+    for (auto door : settings["pin_mapping"]["doors"])
+    {
+        GarageDoor::Door doorStruct;
+        doorStruct.name = door["name"].dump();
+        doorStruct.pin = door["relay_pin"].dump();
+        doorStruct.sig_key = door["sig_key"].dump();
+
+        pin_ptr pin(GetPin(doorStruct.pin));
+        if (pin != nullptr)
+        {
+            doorStruct.value = GetPin(doorStruct.pin)->GetValue();
+        }
+
+        doorList.insert(std::pair<tstring, GarageDoor::Door>(doorStruct.name, doorStruct));
+        std::cout << "Appending door: " << doorStruct.name << std::endl;
+    }
+
+    std::cout << doorList.size() << " Door(s) Loaded From Configuration" << std::endl;
 }

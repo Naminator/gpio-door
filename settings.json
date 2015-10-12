@@ -1,8 +1,12 @@
 {
     "serial_driver": "sysfs",
     "pin_mapping": {
-        "tsochev_door": "PA12",
-        "todorov_door": "PA14"
+        "doors": [
+            {"name": "tsochev", "relay_pin": "PA12", "sig_key": "69c8684aa5d74e040dd93aa5184d3c79"},
+            {"name": "todorov", "relay_pin": "PA14", "sig_key": "ed49937b4605c522269e0011ed8d73a4"}
+        ],
+        "bluetooth": {"TX": "PA20", "RX": "PA21"},
+        "magnetic_lock": "PA30"
     },
     "database": {
         "driver": "mysql",

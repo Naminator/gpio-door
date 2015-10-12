@@ -1,4 +1,5 @@
 #pragma once
+#include <exception>
 #include "stdafx.h"
 #include "GarageDoor/Filesystem.h"
 #include "nlohmann/json/json.hpp"
@@ -12,6 +13,7 @@ namespace GarageDoor {
     public:
         Config();
         tstring GetSetting(tstring);
+        json & GetJsonRaw();
 
     private:
         void ReloadSettings();

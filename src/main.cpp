@@ -20,14 +20,14 @@ int main(int, char**)
     GarageDoor::Console::WriteLine(ss.str());
     GarageDoor::Console::WriteLine(TEXT("Reading GPIO pins..."));
 
-    GarageDoor::GPIO::Manager * gpioManager = new GarageDoor::GPIO::Manager;
+    GarageDoor::Config * Config = new GarageDoor::Config();
+    GarageDoor::GPIO::Manager * gpioManager = new GarageDoor::GPIO::Manager(Config);
     gpioManager->LoadPins();
 
     GarageDoor::Console::WriteLine(TEXT("Done reading GPIO pins."));
     std::cout << gpioManager->CountPins() << " pins loaded." << std::endl;
 
-    GarageDoor::Config * Config = new GarageDoor::Config();
-    std::cout << Config->GetSetting("serial_driver") << std::endl;
+    gpioManager->LoadDoors();
 
     if (gpioManager->CountPins() == 0)
     {

@@ -20,5 +20,22 @@ void GarageDoor::Config::ReloadSettings()
 
 tstring GarageDoor::Config::GetSetting(tstring key)
 {
-    return jsonSettings[key];
+    tstring val;
+
+    try
+    {
+        json jsonVal = jsonSettings[key];
+        val = jsonVal.get<tstring>();
+    } catch(std::exception e)
+    {
+        std::cout << "Unknown setting '" << key << "'" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    return val;
+}
+
+json & GarageDoor::Config::GetJsonRaw()
+{
+    return std::ref(jsonSettings);
 }
